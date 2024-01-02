@@ -7,13 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:malhas_geograficas_br/main.dart';
+import 'package:malhas_geograficas_br/geographic_meshes_brazil.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const GeographicMeshesOfBrazil());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
