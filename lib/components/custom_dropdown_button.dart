@@ -6,6 +6,7 @@ class CustomDropdownButton<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final T value;
   final void Function(T?) onChanged;
+  final bool validate;
 
   const CustomDropdownButton(
       {super.key,
@@ -13,7 +14,8 @@ class CustomDropdownButton<T> extends StatelessWidget {
       required this.hint,
       required this.items,
       required this.value,
-      required this.onChanged});
+      required this.onChanged,
+      required this.validate});
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +29,14 @@ class CustomDropdownButton<T> extends StatelessWidget {
       items: items,
       value: value,
       onChanged: onChanged,
-      validator: (value) {
-        if (value == null || value == '') {
-          return 'Please enter some text';
-        }
-        return null;
-      },
+      validator: validate
+          ? (value) {
+              if (value == null || value == '') {
+                return 'Please enter some text';
+              }
+              return null;
+            }
+          : null,
     );
   }
 }
